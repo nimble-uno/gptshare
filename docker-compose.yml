@@ -8,7 +8,7 @@ x-defaults: &defaults
 
 services:
   web:
-    image: alawyyahdan/gptshare:latest
+    image: alawyyahdan/gptshare
     environment:
       - CHATGPT_GATEWAY_URL=http://gateway:8787
     ports:
@@ -22,7 +22,7 @@ services:
 
 
   gateway:
-    image: alawyyahdan/gptshare:latest
+    image: dairoot/chatgpt-gateway:latest
     # ports:
     #   - "8787:8787"
     deploy:
