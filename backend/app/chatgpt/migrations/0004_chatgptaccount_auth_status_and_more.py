@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='chatgptaccount',
             name='auth_status',
-            field=models.BooleanField(default=True, verbose_name='授权状态'),
+            field=models.BooleanField(default=True, verbose_name='Authorization status'),
         ),
         migrations.AlterField(
             model_name='chatgptaccount',

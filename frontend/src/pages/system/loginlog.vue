@@ -49,7 +49,7 @@ const columns: TableProps['columns'] = [
   { colKey: 'username', title: 'Name', width: 200 },
   { colKey: 'chatgpt_username', title: 'ChatGPT', width: 200 },
   { colKey: 'ip', title: 'IP', width: 200 },
-  // { colKey: 'country', title: '国家/地区', width: 100 },
+   { colKey: 'country', title: 'Country/Area', width: 100 },
   { colKey: 'log_type', title: 'Log Type', width: 200 },
   { colKey: 'created_at', title: 'Created Time', width: 200 },
   { colKey: 'user_agent', title: 'User-Agent', width: 250 },

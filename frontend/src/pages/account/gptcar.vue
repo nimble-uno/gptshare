@@ -27,7 +27,7 @@
               </div>
             </template>
 
-            <t-link variant="outline"> ChatGPT Account {{ row.gpt_account_name_list.length }} 个 </t-link>
+            <t-link variant="outline"> ChatGPT Account {{ row.gpt_account_name_list.length }} Acc. </t-link>
           </t-popup>
           <!-- <t-space style="display: flex; flex-wrap: wrap; max-width: 100%; overflow: hidden">
             <t-tag v-for="item in row.gpt_account_name_list" :key="item" max-width="80"> {{ item }} </t-tag>
@@ -40,14 +40,14 @@
 
         <template #op="slotProps">
           <t-space>
-            <t-link theme="primary" @click="handleEdit(slotProps.row)">编辑</t-link>
-            <t-link theme="danger" @click="handleClickDelete(slotProps.row)">删除</t-link>
+            <t-link theme="primary" @click="handleEdit(slotProps.row)">Edit</t-link>
+            <t-link theme="danger" @click="handleClickDelete(slotProps.row)">Delete</t-link>
           </t-space>
         </template>
       </t-table>
 
       <!-- 添加/编辑 用户 dialog -->
-      <t-dialog v-model:visible="showDialog" :on-confirm="handleConfirm" title="新增 用户" width="800px">
+      <t-dialog v-model:visible="showDialog" :on-confirm="handleConfirm" title="New Users" width="800px">
         <t-form
           ref="addFormRef"
           v-loading="loading"
@@ -88,7 +88,7 @@
       <!-- 确认删除 dialog -->
       <t-dialog
         v-model:visible="dialogVisibleDelete"
-        header="确认删除该 号池 吗"
+        header="Are you sure you want to delete the pool?"
         width="600"
         :on-confirm="handleDelete"
       >
@@ -231,7 +231,7 @@ const addgptCar = async () => {
     await getChatCarList();
     newGptCar.value = defaultGptCar;
     showDialog.value = false;
-    MessagePlugin.success('新增成功');
+    MessagePlugin.success('Added successfully');
   }
 };
 
@@ -240,7 +240,7 @@ const handleAdd: FormProps['onSubmit'] = async ({ validateResult, firstError }) 
   if (validateResult === true) {
     addgptCar();
   } else {
-    console.error('表单引用未定义', firstError);
+    console.error('Form reference undefined', firstError);
   }
 };
 
@@ -255,7 +255,7 @@ const handleDelete = async () => {
     MessagePlugin.error(JSON.stringify(Object.values(data)[0]));
   } else {
     await getChatCarList();
-    MessagePlugin.success('删除成功');
+    MessagePlugin.success('Deleted successfully');
   }
 };
 </script>

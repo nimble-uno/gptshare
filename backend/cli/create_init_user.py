@@ -15,7 +15,7 @@ if __name__ == "__main__":
     from app.settings import FREE_ACCOUNT_USERNAME, ADMIN_USERNAME, ADMIN_PASSWORD
 
     if not ADMIN_USERNAME:
-        raise Exception("未设置 超级管理员账密")
+        raise Exception("Not set Super Administrator Account Secret")
 
 
     defaults = {"remark": "super-administrator", "isolated_session": False}

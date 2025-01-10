@@ -23,8 +23,8 @@
         @page-change="rehandlePageChange"
       >
         <template #auth_status="{ row }">
-          <t-tag v-if="row.auth_status === false" theme="danger" variant="light"> 已过期 </t-tag>
-          <t-tag v-if="row.auth_status === true" theme="success" variant="light"> 运行中 </t-tag>
+          <t-tag v-if="row.auth_status === false" theme="danger" variant="light"> Expired </t-tag>
+          <t-tag v-if="row.auth_status === true" theme="success" variant="light"> Active </t-tag>
         </template>
 
         <!--
@@ -60,10 +60,10 @@
 
         <template #op="slotProps">
           <t-space>
-            <!-- <t-link theme="primary" @click="handleUpdate(slotProps.row)">更新</t-link> -->
-            <t-link theme="primary" @click="handleEdit(slotProps.row)">编辑</t-link>
+            <!-- <t-link theme="primary" @click="handleUpdate(slotProps.row)">Update</t-link> -->
+            <t-link theme="primary" @click="handleEdit(slotProps.row)">Edit</t-link>
 
-            <t-link theme="danger" @click="handleClickDelete(slotProps.row)">删除</t-link>
+            <t-link theme="danger" @click="handleClickDelete(slotProps.row)">Delete</t-link>
           </t-space>
         </template>
       </t-table>
@@ -90,7 +90,7 @@
                   >Session Token</t-link
                 >：Valid for 30 days
                 <!-- or
-                <t-link target="_blank" theme="primary" size="small" :href="ChatgptTokenAuthUrl">自动获取</t-link> -->
+                <t-link target="_blank" theme="primary" size="small" :href="ChatgptTokenAuthUrl">Auto-acquisition</t-link> -->
               </span>
               <span style="font-size: 12px; color: #888"> Refresh Token：Permanent validity </span>
             </div>
@@ -99,10 +99,10 @@
       </t-dialog>
 
       <!-- 编辑 备注信息 -->
-      <t-dialog v-model:visible="dialogVisibleEdit" header="编辑信息" width="50%" :on-confirm="handleEditConfirm">
+      <t-dialog v-model:visible="dialogVisibleEdit" header="Edit information" width="50%" :on-confirm="handleEditConfirm">
         <t-form v-loading="loading" :data="editChatInfo" :label-width="120">
-          <t-form-item label="备注信息">
-            <t-input v-model="editChatInfo.remark" size="large" placeholder="备注信息"></t-input>
+          <t-form-item label="Remarks information">
+            <t-input v-model="editChatInfo.remark" size="large" placeholder="Remarks information"></t-input>
           </t-form-item>
         </t-form>
       </t-dialog>
@@ -110,7 +110,7 @@
       <!-- 确认删除 dialog -->
       <t-dialog
         v-model:visible="dialogVisibleDelete"
-        header="确认删除该 ChatGPT token 吗"
+        header="Are you sure you want to delete the ChatGPT token?"
         width="600"
         :on-confirm="handleDelete"
       >
@@ -158,10 +158,10 @@ const columns: TableProps['columns'] = [
   { colKey: 'chatgpt_username', title: 'ChatGPT Account', width: 220, fixed: 'left' },
   { colKey: 'auth_status', title: 'Status', width: 100, fixed: 'left' },
   { colKey: 'plan_type', title: 'Plan Type', width: 100 },
-  // { colKey: 'use_count', title: '近期用量', width: 350 },
+  // { colKey: 'use_count', title: 'Usage', width: 350 },
   { colKey: 'access_token_exp', title: 'Access Token Exp. Time', width: 200 },
   { colKey: 'created_time', title: 'Created Time', width: 200 },
-  // { colKey: 'updated_at', title: '最近更新时间', width: 200 },
+  // { colKey: 'updated_at', title: 'Last Updated', width: 200 },
   { colKey: 'remark', title: 'Remark' },
   { width: 200, colKey: 'op', title: 'Options' },
 ];
@@ -219,7 +219,7 @@ const addChatToken = async () => {
     showDialog.value = false;
     await getChatGPTList();
     newChat.value.chatgpt_token = '';
-    MessagePlugin.success('新增成功');
+    MessagePlugin.success('Added successfully');
   }
 };
 
@@ -246,13 +246,13 @@ const handleDelete = async () => {
     MessagePlugin.error(JSON.stringify(Object.values(data)[0]));
   } else {
     await getChatGPTList();
-    MessagePlugin.success('删除成功');
+    MessagePlugin.success('Deleted successfully');
   }
 };
 
 const handleAdd = () => {
   if (newChat.value.chatgpt_token.trim() === '') {
-    MessagePlugin.error('Token 不能为空');
+    MessagePlugin.error('Token cannot be empty');
   } else {
     addChatToken();
   }
@@ -269,7 +269,7 @@ const handleEditConfirm = async () => {
     chatgpt_username: editChatInfo.value.chatgpt_username,
   });
   await getChatGPTList();
-  MessagePlugin.success('修改成功');
+  MessagePlugin.success('Modified successfully');
   dialogVisibleEdit.value = false;
 };
 </script>

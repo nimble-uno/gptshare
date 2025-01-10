@@ -4,8 +4,8 @@
     <t-card class="list-card-container">
       <t-row justify="space-between">
         <div class="left-operation-container">
-          <!-- <t-button @click="$router.push('/login')">访问</t-button> -->
-          <t-button @click="handleShowDialog()">新增</t-button>
+          <!-- <t-button @click="$router.push('/login')">Access</t-button> -->
+          <t-button @click="handleShowDialog()">Add</t-button>
           <t-button
             variant="base"
             :loading="loading"
@@ -13,7 +13,7 @@
             :disabled="!selectedRowKeys.length"
             @click="BatcModelLimit"
           >
-            限制</t-button
+            Limit</t-button
           >
           <p v-if="!!selectedRowKeys.length" class="selected-count">
             {{ $t('pages.listBase.select') }} {{ selectedRowKeys.length }} {{ $t('pages.listBase.items') }}
@@ -58,8 +58,8 @@
 
         <template #op="slotProps">
           <t-space>
-            <t-link theme="primary" @click="handleEdit(slotProps.row)"> 编辑</t-link>
-            <t-link theme="danger" @click="handleClickDelete(slotProps.row)"> 删除</t-link>
+            <t-link theme="primary" @click="handleEdit(slotProps.row)"> Edit</t-link>
+            <t-link theme="danger" @click="handleClickDelete(slotProps.row)"> Delete</t-link>
           </t-space>
         </template>
       </t-table>
@@ -76,7 +76,7 @@
       </t-dialog>
 
       <!-- 添加/编辑 用户 dialog -->
-      <t-dialog v-model:visible="showDialog" :on-confirm="handleConfirm" title="新增 用户" width="800px">
+      <t-dialog v-model:visible="showDialog" :on-confirm="handleConfirm" title="New Users" width="800px">
         <t-form
           ref="addFormRef"
           v-loading="loading"
@@ -203,7 +203,7 @@
       <t-dialog
         v-model:visible="showModelLimitDialog"
         :on-confirm="handleBatchModelLimitConfirm"
-        title="批量限制模型"
+        title="Batch Limit Model"
         width="800px"
       >
         <t-form
@@ -274,7 +274,7 @@
         </t-form>
       </t-dialog>
       <!-- 确认删除 dialog -->
-      <t-dialog v-model:visible="showDeleteDialog" header="确认删除该用户吗？" width="500" :on-confirm="handleDelete">
+      <t-dialog v-model:visible="showDeleteDialog" header="Confirm deleting the user? " width="500" :on-confirm="handleDelete">
       </t-dialog>
     </t-card>
   </div>
@@ -349,7 +349,7 @@ const onSelectChange: TableProps['onSelectChange'] = (value, _) => {
 };
 
 const columns: TableProps['columns'] = [
-  { colKey: 'row-select', type: 'multiple', checkProps: ({ row }) => ({ disabled: row.username === 'free_account' }) },
+  { colKey: 'row-select', type: 'multiple', checkProps: ({ row }) => ({ disabled: row.username === 'NimbleTrialUser' }) },
   { colKey: 'is_active', title: 'Status', width: 100 },
   { colKey: 'username', title: 'title-username', width: 200, fixed: 'left' },
   { colKey: 'isolated_session', title: 'Self-Session', width: 100 },
@@ -384,7 +384,7 @@ const rules: FormProps['rules'] = {
   is_active: [{ required: true, message: 'Please input is_active', trigger: 'blur' }],
   username: [
     { required: true, message: 'Please input username', trigger: 'blur' },
-    { validator: (val) => val.length >= 4, message: '至少 4 个字符' },
+    { validator: (val) => val.length >= 4, message: 'At least 4 characters' },
   ],
   password: [{ required: true, message: 'Please input password', trigger: 'blur' }],
   isolated_session: [{ required: true, message: 'Please select isolated_session', trigger: 'blur' }],
@@ -486,7 +486,7 @@ const addOrUpdateUser = async () => {
     await getUserList();
     newUser.value = defaultUser;
     showDialog.value = false;
-    MessagePlugin.success('新增成功');
+    MessagePlugin.success('Added successfully');
   }
 };
 
@@ -508,7 +508,7 @@ const batchUpdateUserModelLimit = async () => {
     await getUserList();
     batchModelLimitUser.value = JSON.parse(JSON.stringify({ model_limit: defaultUser.model_limit }));
     showModelLimitDialog.value = false;
-    MessagePlugin.success('限制成功');
+    MessagePlugin.success('Limiting success');
   }
 };
 
@@ -546,7 +546,7 @@ const handleDelete = async () => {
     MessagePlugin.error(JSON.stringify(Object.values(data)[0]));
   } else {
     await getUserList();
-    MessagePlugin.success('删除成功');
+    MessagePlugin.success('Deleted successfully');
   }
 };
 
@@ -554,7 +554,7 @@ const handlebatchModelLimit: FormProps['onSubmit'] = async ({ validateResult, fi
   if (validateResult === true) {
     batchUpdateUserModelLimit();
   } else {
-    console.error('表单引用未定义', firstError);
+    console.error('Form reference undefined', firstError);
   }
 };
 
@@ -563,7 +563,7 @@ const handleAdd: FormProps['onSubmit'] = async ({ validateResult, firstError }) 
   if (validateResult === true) {
     addOrUpdateUser();
   } else {
-    console.error('表单引用未定义', firstError);
+    console.error('Form reference undefined', firstError);
   }
 };
 

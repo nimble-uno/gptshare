@@ -2,7 +2,7 @@
   <div>
     <t-dialog
       :visible="tableVisible"
-      header="请选择 ChatGPT 账号"
+      header="Please select a ChatGPT account"
       :cancel-btn="null"
       :confirm-btn="null"
       :on-close="onClose"
@@ -36,10 +36,10 @@
                 <div style="font-size: 12px; display: flex; justify-content: space-between">
                   <div>实时状态</div>
                   <div>
-                    <span v-if="item.auth_status === false"> 已过期 </span>
-                    <span v-else-if="getGPTUsePercent(item) < 40"> 空闲 </span>
-                    <span v-else-if="getGPTUsePercent(item) < 80"> 忙碌 </span>
-                    <span v-else> 繁忙 | 可用 </span>
+                    <span v-if="item.auth_status === false"> Expired </span>
+                    <span v-else-if="getGPTUsePercent(item) < 40"> Free Space </span>
+                    <span v-else-if="getGPTUsePercent(item) < 80"> Full Space </span>
+                    <span v-else> Busy | Available </span>
                   </div>
                 </div>
 
@@ -83,9 +83,9 @@
 
             <template #action>
               <div>
-                <t-tag v-if="item.auth_status === false" theme="danger" variant="light"> 已过期 </t-tag>
-                <t-tag v-else-if="item.use_count.last_1h + item.use_count.last_2h + item.use_count.last_3h < 20" theme="success" variant="light"> 空闲 </t-tag>
-                <t-tag v-else theme="warning" variant="light"> 繁忙 </t-tag>
+                <t-tag v-if="item.auth_status === false" theme="danger" variant="light"> Expired </t-tag>
+                <t-tag v-else-if="item.use_count.last_1h + item.use_count.last_2h + item.use_count.last_3h < 20" theme="success" variant="light"> Free Space </t-tag>
+                <t-tag v-else theme="warning" variant="light"> Busy </t-tag>
               </div>
             </template>
           </t-list-item>
@@ -154,7 +154,7 @@ const onSelect = async (chatgptId: number) => {
     MessagePlugin.error(JSON.stringify(Object.values(data)[0]));
   } else {
     Cookies.set('user-gateway-token', data['user-gateway-token'], { expires: 7 });
-    MessagePlugin.success('登录成功');
+    MessagePlugin.success('Login Successful');
     window.location.href = '/'; // 跳转到首页
   }
 };

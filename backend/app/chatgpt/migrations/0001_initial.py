@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('refresh_token', models.TextField()),
                 ('remark', models.TextField(verbose_name='Remark')),
                 ('created_time', models.IntegerField(blank=True, db_index=True, verbose_name='Created Time')),
-                ('updated_time', models.IntegerField(blank=True, db_index=True, verbose_name='最后修改时间')),
+                ('updated_time', models.IntegerField(blank=True, db_index=True, verbose_name='Last modified')),
             ],
         ),
         migrations.CreateModel(
