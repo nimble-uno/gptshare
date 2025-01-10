@@ -74,12 +74,12 @@ const idDelete = ref('');
 
 const columns: TableProps['columns'] = [
   { colKey: 'id', title: 'ID' },
-  { colKey: 'chatgpt_username', title: 'ChatGPT 账号', width: 200 },
+  { colKey: 'chatgpt_username', title: 'ChatGPT Account', width: 200 },
   { colKey: 'invite_count', title: '邀请数量' },
   { colKey: 'used_count', title: '已用数量' },
   { colKey: 'expires_at', title: '过期时间', width: 200 },
   { colKey: 'invite_url', title: '邀请链接', width: 300 },
-  { width: 200, colKey: 'op', title: '操作' },
+  { width: 200, colKey: 'op', title: 'Options' },
 ];
 
 onMounted(async () => {

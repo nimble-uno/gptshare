@@ -50,7 +50,7 @@ export default [
         meta: {
           title: {
             zh_CN: '号池',
-            en_US: 'gpt pool',
+            en_US: 'GPT Pool',
           },
         },
       },

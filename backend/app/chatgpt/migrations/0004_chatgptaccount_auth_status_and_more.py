@@ -18,6 +18,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='chatgptaccount',
             name='remark',
-            field=models.TextField(blank=True, null=True, verbose_name='备注'),
+            field=models.TextField(blank=True, null=True, verbose_name='Remark'),
         ),
     ]

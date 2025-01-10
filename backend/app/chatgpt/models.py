@@ -5,9 +5,9 @@ from django.db import models
 
 class ChatgptCar(models.Model):
     car_name = models.CharField(unique=True, max_length=32)
-    remark = models.CharField(max_length=128, blank=True, verbose_name="备注")
+    remark = models.CharField(max_length=128, blank=True, verbose_name="Remark")
     gpt_account_list = models.JSONField(default=list)
-    created_time = models.IntegerField(db_index=True, blank=True, verbose_name="创建时间")
+    created_time = models.IntegerField(db_index=True, blank=True, verbose_name="Created Time")
     updated_time = models.IntegerField(db_index=True, blank=True, verbose_name="最后修改时间")
 
 class ChatgptAccount(models.Model):
@@ -17,8 +17,8 @@ class ChatgptAccount(models.Model):
     access_token = models.TextField()
     session_token = models.TextField(null=True, blank=True)
     refresh_token = models.TextField(null=True, blank=True)
-    remark = models.TextField(null=True, blank=True,verbose_name="备注")
-    created_time = models.IntegerField(db_index=True, blank=True, verbose_name="创建时间")
+    remark = models.TextField(null=True, blank=True,verbose_name="Remark")
+    created_time = models.IntegerField(db_index=True, blank=True, verbose_name="Created Time")
     updated_time = models.IntegerField(db_index=True, blank=True, verbose_name="最后修改时间")
 
     @classmethod

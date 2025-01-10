@@ -36,10 +36,10 @@
         <t-loading :loading="loading">
           <t-form :data="loginForm" :label-width="0" :rules="rules" ref="loginFormRef" @submit="onSubmit">
             <t-form-item name="username">
-              <t-input v-model="loginForm.username" placeholder="用户名"></t-input>
+              <t-input v-model="loginForm.username" placeholder="Name"></t-input>
             </t-form-item>
             <t-form-item name="password">
-              <t-input v-model="loginForm.password" type="password" autocomplete="on" placeholder="密码"></t-input>
+              <t-input v-model="loginForm.password" type="password" autocomplete="on" placeholder="Password"></t-input>
             </t-form-item>
 
             <t-form-item v-if="loginType === 'register'" name="chatgpt_token">

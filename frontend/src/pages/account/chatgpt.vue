@@ -3,7 +3,7 @@
     <t-card class="list-card-container">
       <t-row justify="space-between">
         <div class="left-operation-container">
-          <t-button @click="showDialog = true">录入</t-button>
+          <t-button @click="showDialog = true">Add</t-button>
 
           <p v-if="!!selectedRowKeys.length" class="selected-count">
             {{ $t('pages.listBase.select') }} {{ selectedRowKeys.length }} {{ $t('pages.listBase.items') }}
@@ -69,7 +69,7 @@
       </t-table>
 
       <!-- 录入 Token dialog -->
-      <t-dialog v-model:visible="showDialog" header="录入 ChatGPT Token" width="50%" :on-confirm="handleAdd">
+      <t-dialog v-model:visible="showDialog" header="Enter ChatGPT Token" width="50%" :on-confirm="handleAdd">
         <t-form v-loading="loading" :data="newChat" :label-width="0">
           <t-form-item label="Token">
             <div style="display: flex; flex-direction: column; width: 100%">
@@ -78,21 +78,21 @@
                 :autosize="{ minRows: 5, maxRows: 5 }"
                 autofocus
                 size="large"
-                placeholder="请输入 Access Token 或 Session Token 或 Refresh Token。一行一串Token，多个Token请换行输入。"
+                placeholder="Please enter Access Token or Session Token or Refresh Token. one line of Token, more than one line of Token, please change the line."
               ></t-textarea>
               <span style="font-size: 12px; color: #888">
                 <t-link target="_blank" theme="primary" size="small" href="https://chatgpt.com/api/auth/session">
                   Access Token</t-link
-                >：有效期10天
+                >：Valid for 10 days
               </span>
               <span style="font-size: 12px; color: #888">
                 <t-link target="_blank" theme="primary" size="small" :href="ChatgptTokenTutorialUrl"
                   >Session Token</t-link
-                >：有效期30天
+                >：Valid for 30 days
                 <!-- or
                 <t-link target="_blank" theme="primary" size="small" :href="ChatgptTokenAuthUrl">自动获取</t-link> -->
               </span>
-              <span style="font-size: 12px; color: #888"> Refresh Token：有效期永久 </span>
+              <span style="font-size: 12px; color: #888"> Refresh Token：Permanent validity </span>
             </div>
           </t-form-item>
         </t-form>
@@ -155,15 +155,15 @@ const rehandlePageChange = (curr: any) => {
 const columns: TableProps['columns'] = [
   { colKey: 'row-select', type: 'multiple' },
   { colKey: 'id', title: 'ID', width: 50 },
-  { colKey: 'chatgpt_username', title: 'ChatGPT 账号', width: 220, fixed: 'left' },
-  { colKey: 'auth_status', title: '状态', width: 100, fixed: 'left' },
-  { colKey: 'plan_type', title: '类型', width: 100 },
+  { colKey: 'chatgpt_username', title: 'ChatGPT Account', width: 220, fixed: 'left' },
+  { colKey: 'auth_status', title: 'Status', width: 100, fixed: 'left' },
+  { colKey: 'plan_type', title: 'Plan Type', width: 100 },
   // { colKey: 'use_count', title: '近期用量', width: 350 },
-  { colKey: 'access_token_exp', title: 'Access Token 过期时间', width: 200 },
-  { colKey: 'created_time', title: '创建时间', width: 200 },
+  { colKey: 'access_token_exp', title: 'Access Token Exp. Time', width: 200 },
+  { colKey: 'created_time', title: 'Created Time', width: 200 },
   // { colKey: 'updated_at', title: '最近更新时间', width: 200 },
-  { colKey: 'remark', title: '备注' },
-  { width: 200, colKey: 'op', title: '操作' },
+  { colKey: 'remark', title: 'Remark' },
+  { width: 200, colKey: 'op', title: 'Options' },
 ];
 const showDialog = ref(false);
 const dialogVisibleDelete = ref(false);

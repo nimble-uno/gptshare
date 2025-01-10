@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='user',
             name='expired_date',
-            field=models.DateField(blank=True, null=True, verbose_name='过期日期'),
+            field=models.DateField(blank=True, null=True, verbose_name='Exp. Date'),
         ),
     ]

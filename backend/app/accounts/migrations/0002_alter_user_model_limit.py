@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='user',
             name='model_limit',
-            field=models.JSONField(default=list, verbose_name='备注'),
+            field=models.JSONField(default=list, verbose_name='Remark'),
         ),
     ]

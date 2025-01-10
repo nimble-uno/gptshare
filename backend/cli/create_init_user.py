@@ -18,7 +18,7 @@ if __name__ == "__main__":
         raise Exception("未设置 超级管理员账密")
 
 
-    defaults = {"remark": "超级管理员", "isolated_session": False}
+    defaults = {"remark": "super-administrator", "isolated_session": False}
     user, created = User.objects.get_or_create(username=ADMIN_USERNAME, defaults=defaults)
     user.set_password(ADMIN_PASSWORD)
     user.is_staff = True
@@ -29,7 +29,7 @@ if __name__ == "__main__":
     print("Superuser created.")
 
     defaults = {
-        "remark": "用于免费体验",
+        "remark": "For free experience",
         "is_active": False,
         "isolated_session": True,
         "model_limit": [

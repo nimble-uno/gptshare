@@ -19,15 +19,16 @@ services:
     <<: *defaults
 
 
-  gateway:
-    image: alawyyahdan/gptshare:latest
+ gateway:
+    image: dairoot/chatgpt-gateway:latest
+    # ports:
+    #   - "8787:8787"
     deploy:
       replicas: 1 # 账号数量多时可+1
     depends_on:
       - redis
     environment:
       - REDIS_URL=redis://redis:6379/0
-      - PROXY_URL_POOL=socks5://warp:1080 # warp 代理地址
     <<: *defaults
 
 

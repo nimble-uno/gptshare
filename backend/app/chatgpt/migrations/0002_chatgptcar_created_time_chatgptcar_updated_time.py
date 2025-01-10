@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='chatgptcar',
             name='created_time',
-            field=models.IntegerField(blank=True, db_index=True, default=1, verbose_name='创建时间'),
+            field=models.IntegerField(blank=True, db_index=True, default=1, verbose_name='Created Time'),
             preserve_default=False,
         ),
         migrations.AddField(
