@@ -101,7 +101,7 @@
       <!-- 编辑 备注信息 -->
       <t-dialog v-model:visible="dialogVisibleEdit" header="Edit information" width="50%" :on-confirm="handleEditConfirm">
         <t-form v-loading="loading" :data="editChatInfo" :label-width="120">
-          <t-form-item label="Remarks information">
+          <t-form-item label="Remarks">
             <t-input v-model="editChatInfo.remark" size="large" placeholder="Remarks information"></t-input>
           </t-form-item>
         </t-form>

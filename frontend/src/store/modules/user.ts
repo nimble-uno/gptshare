@@ -36,15 +36,15 @@ export const useUserStore = defineStore('user', {
         this.token = data.admin_token;
         this.is_admin = data.is_admin;
         Cookies.set('user_token', data.admin_token, { expires: 7 });
-        MessagePlugin.success('登录成功');
+        MessagePlugin.success('Login successful');
       } else if (response.status === 400) {
         data = await response.json();
         MessagePlugin.error(JSON.stringify(Object.values(data)[0]));
       } else if (response.status === 502) {
-        MessagePlugin.error('服务未正常启动');
+        MessagePlugin.error('Service not starting properly');
         return new Response();
       } else if (response.status === 500) {
-        MessagePlugin.error('系统异常，请稍后再试');
+        MessagePlugin.error('System error. Please try again later.');
       }
       return data;
     },

@@ -54,14 +54,14 @@ class ChatGPTAccountView(generics.ListCreateAPIView):
             chatgpt_name = res_json["user_info"]["email"]
             req_gateway("post", "/api/close-chatgpt-memory", json={"chatgpt_name": chatgpt_name})
 
-        return Response({"message": "录入成功"})
+        return Response({"message": "Entered successfully"})
 
     def put(self, request):
         serializer = UpdateChatgptInfoSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         ChatgptAccount.objects.filter(chatgpt_username=serializer.data["chatgpt_username"]).update(
             remark=serializer.data["remark"])
-        return Response({"message": "更新gpt信息成功"})
+        return Response({"message": "Updated GPT information successfully"})
 
     def delete(self, request):
         serializer = DeleteChatgptAccountSerializer(data=request.data)
@@ -74,7 +74,7 @@ class ChatGPTAccountView(generics.ListCreateAPIView):
                 car_obj.delete()
             gpt_obj.delete()
 
-        return Response({"message": "删除成功"})
+        return Response({"message": "Deleted successfully"})
 
 
 class ChatGPTLoginView(APIView):
@@ -89,7 +89,7 @@ class ChatGPTLoginView(APIView):
         user_gpt_id_list = [i.id for i in user_gpt_list]
 
         if serializer.data["chatgpt_id"] not in user_gpt_id_list:
-            raise ValidationError("该账号不属于当前用户")
+            raise ValidationError("This account does not belong to the current user")
 
         chatgpt = ChatgptAccount.get_by_id(serializer.data["chatgpt_id"])
         user_name = request.user.username + ip if request.user.username == "free_account" else request.user.username
